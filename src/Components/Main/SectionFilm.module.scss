@@ -1,0 +1,15 @@
+.section {
+  background-color: rgb(152, 23, 23);
+  width: 60%;
+  height: 100%;
+  margin: auto;
+  border-radius: 50px;
+
+  .container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    height: 100%;
+    width: 100%;
+  }
+}
