@@ -1,18 +1,32 @@
 import { useEffect } from "react";
 import style from "./SectionFilm.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchFilms } from "../../store/filmSliceRTK";
 
 const FilmContainer = () => {
-  const path = "http://www.omdbapi.com/?apikey=177bfe1b";
+  const dispatch = useDispatch();
+  const { films } = useSelector((state: any) => state.filmsStore);
+
   useEffect(() => {
-    fetch(path)
-      .then((result) => {
-        result.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    dispatch(FetchFilms());
   }, []);
-  return <div className={style.container}></div>;
+
+  console.log("its films from selector", films);
+  return (
+    <div className={style.container}>
+      {films.map((oneFilm: any) => {
+        return (
+          <picture key={oneFilm.kinopoiskId} className={style.filmsWrapper}>
+            <img
+              className={style.filmsImage}
+              src={oneFilm.posterUrl}
+              alt="film"
+            />
+          </picture>
+        );
+      })}
+    </div>
+  );
 };
 
 export default FilmContainer;
