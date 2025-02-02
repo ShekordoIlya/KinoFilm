@@ -19,7 +19,7 @@ const FilmContainer = () => {
   console.log(films, "its from film");
   const renderPageNumbers = () => {
     const pages = [];
-    for (let i = currentPage; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <li
           className={style.currenPage}
