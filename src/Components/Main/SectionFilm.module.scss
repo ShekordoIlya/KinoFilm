@@ -29,6 +29,21 @@
   align-items: center;
   color: white;
   padding: 20px;
+  .prevNextButton {
+    background-color: orange;
+    border-radius: 10px;
+    color: black;
+    transition: 0.3s;
+    &:hover {
+      transform: scale(1.2);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    &[disabled] {
+      background-color: grey;
+      transform: scale(1);
+    }
+  }
   .currenPage {
     cursor: pointer;
     transition: 0.3s;
