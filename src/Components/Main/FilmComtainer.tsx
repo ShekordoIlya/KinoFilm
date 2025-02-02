@@ -16,12 +16,25 @@ const FilmContainer = () => {
     dispatch(setPage(pageNumber));
   };
 
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      dispatch(setPage(currentPage - 1));
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage <= Math.ceil(totalItems / itemsPerPage)) {
+      dispatch(setPage(currentPage + 1));
+    }
+  };
+
   console.log(films, "its from film");
   const renderPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <li
+          style={{ color: i === currentPage ? "red" : "white" }}
           className={style.currenPage}
           onClick={() => {
             handlePageChange(i);
@@ -49,7 +62,29 @@ const FilmContainer = () => {
           );
         })}
       </div>
-      <ul className={style.renderPagesWrapper}>{renderPageNumbers()}</ul>
+      <ul className={style.renderPagesWrapper}>
+        {
+          <button
+            onClick={() => handlePrevious()}
+            disabled={currentPage === 1}
+            type="button"
+          >
+            Предыдущая страница
+          </button>
+        }
+        {renderPageNumbers()}
+        {
+          <button
+            onClick={() => {
+              handleNext();
+            }}
+            disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
+            type="button"
+          >
+            Следующая страница
+          </button>
+        }
+      </ul>
     </>
   );
 };

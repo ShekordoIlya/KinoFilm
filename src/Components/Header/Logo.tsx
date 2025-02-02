@@ -6,7 +6,7 @@ interface ILogo {
 const Logo = ({ logoText }: ILogo) => {
   return (
     <p className={style.logo}>
-      <a href="#">{logoText}</a>
+      <a href="http://localhost:5173/">{logoText}</a>
     </p>
   );
 };
