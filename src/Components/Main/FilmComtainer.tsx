@@ -65,6 +65,7 @@ const FilmContainer = () => {
       <ul className={style.renderPagesWrapper}>
         {
           <button
+            className={style.prevNextButton}
             onClick={() => handlePrevious()}
             disabled={currentPage === 1}
             type="button"
@@ -75,6 +76,7 @@ const FilmContainer = () => {
         {renderPageNumbers()}
         {
           <button
+            className={style.prevNextButton}
             onClick={() => {
               handleNext();
             }}

@@ -7,10 +7,16 @@ interface INavbar {
 
 const Navbar = ({ inputType }: INavbar) => {
   return (
-    <nav className={style.wrapper}>
+    <form className={style.wrapper}>
       <Input inputType={inputType} placeholder="Введите название фильма" />
-    </nav>
+    </form>
   );
 };
 
 export default Navbar;
+
+{
+  /* <form onSubmit={handlerSubmit} className={style.wrapper}>
+      <Input inputType={inputType} placeholder="Введите название фильма" />
+    </form> */
+}
