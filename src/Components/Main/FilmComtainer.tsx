@@ -1,31 +1,56 @@
 import { useEffect } from "react";
 import style from "./SectionFilm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchFilms } from "../../store/filmSliceRTK";
+import { FetchFilms, setPage } from "../../store/filmSliceRTK";
 
 const FilmContainer = () => {
   const dispatch = useDispatch();
-  const { films } = useSelector((state: any) => state.filmsStore);
+  const { films, currentPage, itemsPerPage, totalItems, totalPages } =
+    useSelector((state: any) => state.filmsStore);
 
   useEffect(() => {
-    dispatch(FetchFilms());
-  }, []);
+    dispatch(FetchFilms({ currPage: currentPage }));
+  }, [currentPage]);
 
-  console.log("its films from selector", films);
+  const handlePageChange = (pageNumber: number) => {
+    dispatch(setPage(pageNumber));
+  };
+
+  console.log(films, "its from film");
+  const renderPageNumbers = () => {
+    const pages = [];
+    for (let i = currentPage; i <= totalPages; i++) {
+      pages.push(
+        <li
+          className={style.currenPage}
+          onClick={() => {
+            handlePageChange(i);
+          }}
+        >
+          {i}
+        </li>
+      );
+    }
+    return pages;
+  };
+
   return (
-    <div className={style.container}>
-      {films.map((oneFilm: any) => {
-        return (
-          <picture key={oneFilm.kinopoiskId} className={style.filmsWrapper}>
-            <img
-              className={style.filmsImage}
-              src={oneFilm.posterUrl}
-              alt="film"
-            />
-          </picture>
-        );
-      })}
-    </div>
+    <>
+      <div className={style.container}>
+        {films.map((oneFilm: any) => {
+          return (
+            <picture key={oneFilm.kinopoiskId} className={style.filmsWrapper}>
+              <img
+                className={style.filmsImage}
+                src={oneFilm.posterUrl}
+                alt="film"
+              />
+            </picture>
+          );
+        })}
+      </div>
+      <ul className={style.renderPagesWrapper}>{renderPageNumbers()}</ul>
+    </>
   );
 };
 
