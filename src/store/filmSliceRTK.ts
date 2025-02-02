@@ -2,10 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const FetchFilms: any = createAsyncThunk(
   "films/fetchFilmsSuccess",
-  async (_, { rejectWithValue }) => {
+  async (objFromFetchProps, { rejectWithValue }) => {
+    const { currPage } = objFromFetchProps;
     try {
       const response = await fetch(
-        "https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_250_MOVIES&page=1",
+        `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_250_MOVIES&page=${currPage}`,
         {
           method: "GET",
           headers: {
@@ -29,11 +30,19 @@ const filmSliceRTK = createSlice({
   name: "films",
   initialState: {
     films: [],
+    totalItems: 0,
+    totalPages: 0,
+    currentPage: 1,
+    itemsPerPage: 20,
     selectedFilm: null,
     error: null as string | null,
     loading: false,
   },
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(FetchFilms.pending, (state) => {
@@ -45,6 +54,8 @@ const filmSliceRTK = createSlice({
         state.loading = false;
         state.error = null;
         state.films = action.payload.items;
+        state.totalItems = action.payload.total;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(FetchFilms.rejected, (state, action) => {
         state.error = action.payload as string;
@@ -52,5 +63,7 @@ const filmSliceRTK = createSlice({
       });
   },
 });
+
+export const { setPage } = filmSliceRTK.actions;
 
 export default filmSliceRTK.reducer;
