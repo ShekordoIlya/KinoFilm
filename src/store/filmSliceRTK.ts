@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const FetchFilms: any = createAsyncThunk(
   "films/fetchFilmsSuccess",
-  async (objFromFetchProps, { rejectWithValue }) => {
+  async (objFromFetchProps: { currPage: number }, { rejectWithValue }) => {
     const { currPage } = objFromFetchProps;
     try {
       const response = await fetch(
