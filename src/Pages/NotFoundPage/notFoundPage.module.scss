@@ -1,0 +1,27 @@
+.bcnotfound {
+  background: url("./icon.png") 50% no-repeat #d37272;
+  padding-top: 100px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  .returnhome {
+    background-color: rgb(190, 48, 48);
+    width: 125px;
+    height: 35px;
+    transition: 0.3s;
+    border: 0px;
+    border-radius: 20px;
+    color: white;
+    &:hover {
+      transition: 0.3s;
+      background-color: pink;
+      color: black;
+      cursor: pointer;
+      transform: scale(1.4);
+    }
+  }
+  .textnotfound {
+    font-size: 24px;
+  }
+}

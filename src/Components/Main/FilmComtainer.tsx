@@ -34,6 +34,7 @@ const FilmContainer = () => {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
         <li
+          key={i}
           style={{ color: i === currentPage ? "red" : "white" }}
           className={style.currenPage}
           onClick={() => {
@@ -70,7 +71,7 @@ const FilmContainer = () => {
             disabled={currentPage === 1}
             type="button"
           >
-            Предыдущая страница
+            {"<"}
           </button>
         }
         {renderPageNumbers()}
@@ -83,7 +84,7 @@ const FilmContainer = () => {
             disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
             type="button"
           >
-            Следующая страница
+            {">"}
           </button>
         }
       </ul>
