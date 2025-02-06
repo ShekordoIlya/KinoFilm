@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
-import Film from "./Pages/Film/Film";
+import FilmPage from "./Pages/Film/FilmPage";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/film/:id" element={<Film />} />
+          <Route path="/film/:kinopoiskId" element={<FilmPage />} />
         </Route>
       </Routes>
     </>

@@ -11,7 +11,7 @@ const Film = () => {
   const { kinopoiskId } = useParams();
   useEffect(() => {
     dispatch(fetchFilm({ kinopoiskId }));
-  }, [kinopoiskId]);
+  }, []);
   console.log(film, "ITS FILM");
   return (
     <div className={style.filmbcg}>
@@ -22,9 +22,10 @@ const Film = () => {
       >
         Назад
       </button>
-      <picture>
-        <img src="#" alt="" />
-      </picture>
+      {/* <picture>
+        <img src={film.posterUrlPreview} alt="" />
+      </picture> */}
+      <div>{film.description}</div>
     </div>
   );
 };

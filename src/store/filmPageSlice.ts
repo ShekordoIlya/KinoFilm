@@ -43,7 +43,6 @@ const filmPageSlice = createSlice({
       .addCase(fetchFilm.fulfilled, (state, action) => {
         state.film = action.payload;
         state.load = false;
-        state.error = action.payload;
       })
       .addCase(fetchFilm.rejected, (state, action) => {
         state.error = action.payload;
