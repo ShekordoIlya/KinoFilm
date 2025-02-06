@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import style from "./SectionFilm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchFilms, setPage } from "../../store/filmSliceRTK";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const FilmContainer = () => {
   const dispatch = useDispatch();
-  const { films, currentPage, itemsPerPage, totalItems, totalPages, idKino } =
+  const { films, currentPage, itemsPerPage, totalItems, totalPages } =
     useSelector((state: any) => state.filmsStore);
   const navigate = useNavigate();
 
@@ -31,7 +31,6 @@ const FilmContainer = () => {
   };
 
   console.log(films, "its from film");
-  console.log(idKino, "WTF");
   const renderPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -58,7 +57,7 @@ const FilmContainer = () => {
           return (
             <picture
               onClick={() => {
-                navigate(`film/${idKino}`);
+                navigate(`film/${oneFilm.kinopoiskId}`);
               }}
               key={oneFilm.kinopoiskId}
               className={style.filmsWrapper}

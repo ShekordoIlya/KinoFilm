@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchFilm: any = createAsyncThunk(
   "film/fetchFilmSuccess",
-  async ({ objFromFilm }, { rejectWithValue }) => {
+  async (objFromFilm, { rejectWithValue }) => {
     const { kinopoiskId } = objFromFilm;
     try {
       const response = await fetch(
@@ -20,7 +20,6 @@ export const fetchFilm: any = createAsyncThunk(
         throw new Error("error");
       }
       const data = await response.json();
-      console.log(data, "ITS Film");
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -31,9 +30,7 @@ export const fetchFilm: any = createAsyncThunk(
 const filmPageSlice = createSlice({
   name: "filmPage",
   initialState: {
-    kinopoiskId: 0,
-    filmName: null as string | null,
-    poster: null as string | null,
+    film: null,
     load: false,
     error: null as string | null,
   },
@@ -44,9 +41,9 @@ const filmPageSlice = createSlice({
         state.load = true;
       })
       .addCase(fetchFilm.fulfilled, (state, action) => {
-        state.kinopoiskId = action.payload;
-        state.filmName = action.payload.nameRu;
-        state.poster = action.payload.posterUrl;
+        state.film = action.payload;
+        state.load = false;
+        state.error = action.payload;
       })
       .addCase(fetchFilm.rejected, (state, action) => {
         state.error = action.payload;

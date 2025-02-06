@@ -3,17 +3,16 @@ import style from "./film.module.scss";
 import { useEffect } from "react";
 import { fetchFilm } from "../../store/filmPageSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import { FetchFilms } from "../../store/filmSliceRTK";
 
 const Film = () => {
-  const { id, filmName, poster } = useSelector((state): any => state.oneFilm);
+  const { film } = useSelector((state): any => state.oneFilm);
   const dispatch = useDispatch();
-  const { kinopoiskId } = useParams();
   const navigate = useNavigate();
+  const { kinopoiskId } = useParams();
   useEffect(() => {
-    dispatch(fetchFilm());
-  }, []);
-  console.log(id, "PARAMS");
+    dispatch(fetchFilm({ kinopoiskId }));
+  }, [kinopoiskId]);
+  console.log(film, "ITS FILM");
   return (
     <div className={style.filmbcg}>
       <button
@@ -24,7 +23,7 @@ const Film = () => {
         Назад
       </button>
       <picture>
-        <img src={poster} alt="" />
+        <img src="#" alt="" />
       </picture>
     </div>
   );
