@@ -38,7 +38,6 @@ const filmSliceRTK = createSlice({
     selectedFilm: null,
     error: null as string | null,
     loading: false,
-    idKino: 0,
   },
   reducers: {
     setPage: (state, action) => {
@@ -58,7 +57,6 @@ const filmSliceRTK = createSlice({
         state.films = action.payload.items;
         state.totalItems = action.payload.total;
         state.totalPages = action.payload.totalPages;
-        state.idKino = action.payload.items;
       })
       .addCase(FetchFilms.rejected, (state, action) => {
         state.error = action.payload as string;
