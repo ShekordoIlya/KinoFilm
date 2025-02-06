@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filmSliceRTK from "./filmSliceRTK";
+import filmPageSlice from "./filmPageSlice";
 
 export default configureStore({
   reducer: {
     filmsStore: filmSliceRTK,
-    // filmsSearch: filmsSearchSliceRTK,
+    oneFilm: filmPageSlice,
   },
 });

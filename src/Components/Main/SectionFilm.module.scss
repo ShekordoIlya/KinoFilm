@@ -15,6 +15,12 @@
     padding: 25px;
     .filmsWrapper {
       height: 300px;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+      }
       .filmsImage {
         height: 100%;
         border-radius: 25px;
