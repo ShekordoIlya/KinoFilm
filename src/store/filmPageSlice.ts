@@ -30,7 +30,7 @@ export const fetchFilm: any = createAsyncThunk(
 const filmPageSlice = createSlice({
   name: "filmPage",
   initialState: {
-    film: null,
+    film: {},
     load: false,
     error: null as string | null,
   },
@@ -42,7 +42,7 @@ const filmPageSlice = createSlice({
       })
       .addCase(fetchFilm.fulfilled, (state, action) => {
         state.film = action.payload;
-        state.load = false;
+        state.load = true;
       })
       .addCase(fetchFilm.rejected, (state, action) => {
         state.error = action.payload;
