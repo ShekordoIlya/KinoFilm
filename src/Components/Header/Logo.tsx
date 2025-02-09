@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./Navbar.module.scss";
 interface ILogo {
   logoText: string;
@@ -6,7 +7,7 @@ interface ILogo {
 const Logo = ({ logoText }: ILogo) => {
   return (
     <p className={style.logo}>
-      <a href="http://localhost:5173/">{logoText}</a>
+      <Link to="/">{logoText}</Link>
     </p>
   );
 };

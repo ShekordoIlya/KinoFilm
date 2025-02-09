@@ -3,29 +3,58 @@ import style from "./film.module.scss";
 import { useEffect } from "react";
 import { fetchFilm } from "../../store/filmPageSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import Main from "../../Components/Main/Main";
 
 const Film = () => {
-  const { film } = useSelector((state): any => state.oneFilm);
+  const { film, load } = useSelector((state): any => state.oneFilm);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { kinopoiskId } = useParams();
   useEffect(() => {
     dispatch(fetchFilm({ kinopoiskId }));
   }, []);
-  console.log(film, "ITS FILM");
+  if (kinopoiskId != film.kinopoiskId) {
+    return <Main />;
+  }
+
+  if (!load) {
+    navigate("/notFound");
+  }
   return (
     <div className={style.filmbcg}>
       <button
+        className={style.returnbtn}
         onClick={() => {
           navigate(-1);
         }}
       >
         Назад
       </button>
-      {/* <picture>
-        <img src={film.posterUrlPreview} alt="" />
-      </picture> */}
-      <div>{film.description}</div>
+      <section className={style.section}>
+        <main className={style.container}>
+          <picture className={style.picture}>
+            <img
+              className={style.image}
+              src={film.posterUrlPreview}
+              alt={film.nameRu}
+            />
+          </picture>
+          <div className={style.wrapeprInfo}>
+            <h3 className={style.nameFilm}>{film.nameRu}</h3>
+            <p>Рейтинг зрителей: {film.ratingGoodReview}</p>
+            <p>Рейтинг на Кинопоиске: {film.ratingKinopoisk}</p>
+            <p>Год выхода в прокат: {film.year}</p>
+          </div>
+        </main>
+        <aside className={style.description}>{film.description}</aside>
+        <div className={style.redirectbtnWrapper}>
+          <button className={style.redirectbtn} type="button">
+            <a target="blank" href={film.webUrl}>
+              Перейти к просмотру
+            </a>
+          </button>
+        </div>
+      </section>
     </div>
   );
 };
