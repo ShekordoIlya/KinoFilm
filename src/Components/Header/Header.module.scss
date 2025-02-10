@@ -12,3 +12,47 @@
   width: 100%;
   background-color: rgb(106, 18, 18);
 }
+.wrapper {
+  display: flex;
+  width: 20%;
+  padding-right: 20px;
+}
+
+.input {
+  width: 80%;
+  height: 50%;
+}
+
+.btnSearch {
+  height: 50%;
+  width: 20%;
+  cursor: pointer;
+  background-color: #413f3f;
+  color: white;
+  // box-shadow: 7px -5px 10px 2px #3d3f60;
+  border-radius: 20px;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 7px -5px 10px 2px #5e4614;
+    transition: 0.3s;
+    color: #196913;
+  }
+  &:active {
+    box-shadow: 7px -5px 10px 2px #a47611;
+    color: #19bc0d;
+  }
+}
+
+.logo {
+  padding-left: 20px;
+  a {
+    color: white;
+    border-bottom: none;
+    font-size: 36px;
+    transition: 0.3s;
+    &:hover {
+      color: grey;
+      transition: 0.3s;
+    }
+  }
+}

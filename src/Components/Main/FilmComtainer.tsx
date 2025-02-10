@@ -3,7 +3,6 @@ import style from "./SectionFilm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchFilms, setPage } from "../../store/filmSliceRTK";
 import { useNavigate, useParams } from "react-router-dom";
-import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 
 const FilmContainer = () => {
   const dispatch = useDispatch();

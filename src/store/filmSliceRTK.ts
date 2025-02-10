@@ -52,7 +52,7 @@ const filmSliceRTK = createSlice({
       })
       .addCase(FetchFilms.fulfilled, (state, action) => {
         console.log("action in fulfilled case:", action.payload);
-        state.loading = false;
+        state.loading = true;
         state.error = null;
         state.films = action.payload.items;
         state.totalItems = action.payload.total;

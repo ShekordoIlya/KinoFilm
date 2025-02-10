@@ -34,6 +34,7 @@
     .picture {
       width: 30%;
       padding: 20px 0;
+      min-height: 300px;
       .image {
         width: 100%;
         border-radius: 25px;
@@ -47,6 +48,7 @@
       gap: 20px;
       align-items: normal;
       text-decoration: underline;
+      width: 50%;
       .nameFilm {
         font-size: 26px;
         color: gold;

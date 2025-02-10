@@ -3,7 +3,6 @@ import style from "./film.module.scss";
 import { useEffect } from "react";
 import { fetchFilm } from "../../store/filmPageSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import Main from "../../Components/Main/Main";
 
 const Film = () => {
   const { film, load } = useSelector((state): any => state.oneFilm);
@@ -13,9 +12,6 @@ const Film = () => {
   useEffect(() => {
     dispatch(fetchFilm({ kinopoiskId }));
   }, []);
-  if (kinopoiskId != film.kinopoiskId) {
-    return <Main />;
-  }
 
   if (!load) {
     navigate("/notFound");
