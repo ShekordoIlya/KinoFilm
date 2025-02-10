@@ -1,13 +1,39 @@
-import Navbar from "./Navbar";
 import style from "./Header.module.scss";
-import Logo from "./Logo";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchQuery } from "../../store/filmSearchSlice";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { searchQuery } = useSelector((state) => state.searchFilms);
+  const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setTimeout(() => dispatch(setSearchQuery(value)), 2000);
+    console.log(searchQuery);
+  };
+  const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate("film/searching");
+  };
   return (
     <header className={style.header}>
       <div className={style.container}>
-        <Logo logoText={"KinoFilm"} />
-        <Navbar inputType={"text"} />
+        <p className={style.logo}>
+          <a href="/">KinoFilm</a>
+        </p>
+        <form className={style.wrapper} onSubmit={handlerSubmit}>
+          <input
+            type={"text"}
+            className={style.input}
+            placeholder={"Введите название фильма"}
+            // value={searchQuery}
+            onChange={handlerInput}
+          />
+          <button type={"submit"} className={style.btnSearch}>
+            Поиск
+          </button>
+        </form>
       </div>
     </header>
   );
