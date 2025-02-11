@@ -3,10 +3,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const FetchSearchFilm: any = createAsyncThunk(
   "films/fetchSearchFilmSuccess",
   async (objFromSearchQuery, { rejectWithValue }) => {
-    const { searchQuery } = objFromSearchQuery;
+    const { searchQuery, currPage } = objFromSearchQuery;
     try {
       const response = await fetch(
-        `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${searchQuery}&page=1`,
+        `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${searchQuery}&page=${currPage}`,
         {
           method: "GET",
           headers: {
@@ -44,6 +44,9 @@ const filmSearchSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -63,6 +66,6 @@ const filmSearchSlice = createSlice({
   },
 });
 
-export const { setSearchQuery } = filmSearchSlice.actions;
+export const { setSearchQuery, setPage } = filmSearchSlice.actions;
 
 export default filmSearchSlice.reducer;

@@ -9,12 +9,16 @@ const Header = () => {
   const { searchQuery } = useSelector((state) => state.searchFilms);
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setTimeout(() => dispatch(setSearchQuery(value)), 2000);
+    setTimeout(() => dispatch(setSearchQuery(value)), 1500);
     console.log(searchQuery);
   };
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate("film/searching");
+    if (searchQuery == "") {
+      alert("Введите название фильма в поле для поиска");
+    } else {
+      navigate("film/searching");
+    }
   };
   return (
     <header className={style.header}>

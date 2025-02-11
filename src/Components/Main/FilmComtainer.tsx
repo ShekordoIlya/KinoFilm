@@ -2,14 +2,13 @@ import { useEffect } from "react";
 import style from "./SectionFilm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchFilms, setPage } from "../../store/filmSliceRTK";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const FilmContainer = () => {
   const dispatch = useDispatch();
   const { films, currentPage, itemsPerPage, totalItems, totalPages } =
     useSelector((state: any) => state.filmsStore);
   const navigate = useNavigate();
-  const { kinopoiskId } = useParams();
 
   useEffect(() => {
     dispatch(FetchFilms({ currPage: currentPage }));
