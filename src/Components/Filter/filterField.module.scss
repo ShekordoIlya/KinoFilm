@@ -1,0 +1,63 @@
+.filter {
+  position: fixed;
+  width: 200px;
+  height: 550px;
+  background-color: red;
+  left: 50px;
+  transition: 0.4s;
+  border-radius: 5px;
+  padding: 20px;
+  opacity: 95%;
+  .input {
+    width: 150px;
+    height: 20px;
+  }
+  .buttonShow {
+    position: absolute;
+    left: 189px;
+    height: 200px;
+    bottom: 0px;
+    width: 30px;
+    background: url("./myArrowLeft.svg") no-repeat red 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: bisque;
+      transform: scale(1.1);
+      transition: 0.3s;
+    }
+  }
+}
+.filterHide {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  left: -195px;
+  transition: 0.4s;
+  .input {
+    width: 150px;
+    height: 20px;
+  }
+  .buttonHide {
+    position: absolute;
+    left: 189px;
+    height: 200px;
+    bottom: 0px;
+    width: 30px;
+    background: url("./myArrow.svg") no-repeat red 0;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: bisque;
+      transform: scale(1.1);
+      transition: 0.3s;
+    }
+  }
+}

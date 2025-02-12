@@ -3,6 +3,7 @@ import style from "./film.module.scss";
 import { useEffect } from "react";
 import { fetchFilm } from "../../store/filmPageSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import FilterField from "../../Components/Filter/FilterField";
 
 const Film = () => {
   const { film, load } = useSelector((state): any => state.oneFilm);
@@ -42,7 +43,9 @@ const Film = () => {
             <p>Год выхода в прокат: {film.year}</p>
           </div>
         </main>
-        <aside className={style.description}>{film.description}</aside>
+        <aside className={style.description}>
+          {film.description == null ? film.shortDescription : film.description}
+        </aside>
         <div className={style.redirectbtnWrapper}>
           <button className={style.redirectbtn} type="button">
             <a target="blank" href={film.webUrl}>
