@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import style from "./filterPage.module.scss";
 import { useEffect } from "react";
-import { FetchFilmFilter } from "../../store/filmFilterSlice";
+import { FetchFilmFilter, setPage } from "../../store/filmFilterSlice";
 import { useNavigate } from "react-router-dom";
 
 const FilterPage = () => {
@@ -59,6 +59,9 @@ const FilterPage = () => {
           {i}
         </li>
       );
+      if (i == 20) {
+        break;
+      }
     }
     return pages;
   };
@@ -136,7 +139,7 @@ const FilterPage = () => {
               onClick={() => {
                 handleNext;
               }}
-              disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
+              disabled={currentPage === 20}
               type="button"
             >
               {">"}

@@ -17,11 +17,12 @@ const FilterField = () => {
   );
   return (
     <div className={!showFilterField ? style.filter : style.filterHide}>
-      <div>
-        <p>Выберите рейтинг:</p>
+      <div className={style.rating}>
+        <p className={style.choseRating}>Выберите рейтинг:</p>
         <div>
-          <p>От:</p>
+          <p className={style.from}>От:</p>
           <select
+            className={style.from}
             onChange={(e) => {
               dispatch(setMinRating(e.target.value));
             }}
@@ -61,7 +62,9 @@ const FilterField = () => {
         </div>
       </div>
       <div>
-        <p>Выберите год:</p>
+        <p className={style.choseYear}>Выберите год:</p>
+        <label className={style.label}>От</label>
+        <label className={style.label}>{yearFrom}</label>
         <input
           onChange={(e) => {
             dispatch(setYearFrom(e.target.value));
@@ -71,11 +74,12 @@ const FilterField = () => {
           max="2024"
           value={yearFrom}
         />
-        <label>От</label>
-        <label>{yearFrom}</label>
       </div>
       <div>
+        <label className={style.label}>До</label>
+        <label className={style.label}>{yearTo}</label>
         <input
+          className={style.inputTo}
           onChange={(e) => {
             dispatch(setYearTo(e.target.value));
           }}
@@ -84,11 +88,10 @@ const FilterField = () => {
           max="2024"
           value={yearTo}
         />
-        <label>До</label>
-        <label>{yearTo}</label>
       </div>
 
       <button
+        className={style.returnbtn}
         type={"button"}
         onClick={() => {
           navigate("/film/filter");

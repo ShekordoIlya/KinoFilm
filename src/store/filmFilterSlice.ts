@@ -59,6 +59,9 @@ const filterFilmSlice = createSlice({
     setYearTo: (state, action) => {
       state.yearTo = action.payload;
     },
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,6 +72,7 @@ const filterFilmSlice = createSlice({
         state.films = action.payload.items;
         state.loading = false;
         state.error = null;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(FetchFilmFilter.rejected, (state) => {
         state.error = "error";
@@ -85,4 +89,5 @@ export const {
   setShowFilterField,
   setYearFrom,
   setYearTo,
+  setPage,
 } = filterFilmSlice.actions;

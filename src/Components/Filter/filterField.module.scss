@@ -8,10 +8,20 @@
   border-radius: 5px;
   padding: 20px;
   opacity: 95%;
-  .input {
-    width: 150px;
-    height: 20px;
+  color: white;
+  .rating {
+    margin-bottom: 50px;
+    .choseRating {
+      margin-bottom: 10px;
+      .from {
+        margin-bottom: 10px;
+        .fromSelect {
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
+
   .buttonShow {
     position: absolute;
     left: 189px;
@@ -28,6 +38,32 @@
       background-color: bisque;
       transform: scale(1.1);
       transition: 0.3s;
+    }
+  }
+  .label {
+    margin-right: 40px;
+  }
+  .choseYear {
+    margin-bottom: 10px;
+  }
+  .inputTo {
+    margin-bottom: 100px;
+  }
+  .returnbtn {
+    background-color: rgb(36, 3, 3);
+    width: 125px;
+    height: 35px;
+    transition: 0.3s;
+    border: 0px;
+    border-radius: 20px;
+    color: white;
+    margin-left: 20px;
+    &:hover {
+      transform: scale(1.3);
+      background-color: bisque;
+      transition: 0.3s;
+      cursor: pointer;
+      color: #000;
     }
   }
 }

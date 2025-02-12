@@ -10,7 +10,6 @@ const Header = () => {
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setTimeout(() => dispatch(setSearchQuery(value)), 1500);
-    console.log(searchQuery);
   };
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
