@@ -4,6 +4,7 @@ import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
 import FilmPage from "./Pages/Film/FilmPage";
 import SearchingPage from "./Pages/SearchingPage/SearchingPage";
+import FilterPage from "./Pages/FilterPage/FilterPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="film/:kinopoiskId" element={<FilmPage />} />
           <Route path="film/searching" element={<SearchingPage />} />
+          <Route path="film/filter" element={<FilterPage />} />
         </Route>
       </Routes>
     </>
