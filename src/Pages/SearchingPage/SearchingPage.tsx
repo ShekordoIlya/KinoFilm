@@ -50,10 +50,13 @@ const SearchingPage = () => {
           {i}
         </li>
       );
+      if (i == 20) {
+        break;
+      }
     }
     return pages;
   };
-  console.log(films);
+
   return (
     <main className={style.main}>
       <button
@@ -102,7 +105,7 @@ const SearchingPage = () => {
               onClick={() => {
                 handleNext();
               }}
-              disabled={currentPage === Math.ceil(totalItems / itemsPerPage)}
+              disabled={currentPage === 20}
               type="button"
             >
               {">"}
