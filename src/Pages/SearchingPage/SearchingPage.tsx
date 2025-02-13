@@ -29,12 +29,9 @@ const SearchingPage = () => {
     }
   };
   const handleNext = () => {
-    if (currentPage <= Math.ceil(totalItems / itemsPerPage)) {
-      dispatch(setPage(currentPage + 1));
-    }
+    dispatch(setPage(currentPage + 1));
   };
 
-  console.log(totalPages, "TOTAL PAGES");
   const renderPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -105,7 +102,7 @@ const SearchingPage = () => {
               onClick={() => {
                 handleNext();
               }}
-              disabled={currentPage === 20}
+              disabled={currentPage === totalPages}
               type="button"
             >
               {">"}

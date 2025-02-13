@@ -56,3 +56,40 @@
     }
   }
 }
+
+.modalContainer {
+  width: 600px;
+  min-height: 400px;
+  background-color: rgb(118, 11, 11);
+  border-radius: 50px;
+  position: fixed;
+  bottom: 100px;
+  left: 400px;
+  .modalOverlay {
+  }
+  .modalContent {
+    .emailWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      margin-bottom: 30px;
+
+      .emailInfo {
+        margin: 20px 0;
+      }
+      .email {
+        width: 300px;
+        border-radius: 40px;
+      }
+    }
+    .wrapperBtn {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 30px;
+      margin-top: 30px;
+      .closeBtn {
+      }
+    }
+  }
+}
