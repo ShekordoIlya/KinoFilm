@@ -39,6 +39,7 @@ const filmSearchSlice = createSlice({
     selectedFilm: null,
     error: null as string | null,
     loading: false,
+    openClose: false,
   },
   reducers: {
     setSearchQuery: (state, action) => {
@@ -46,6 +47,9 @@ const filmSearchSlice = createSlice({
     },
     setPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setOpenClose: (state, action) => {
+      state.openClose = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -66,6 +70,7 @@ const filmSearchSlice = createSlice({
   },
 });
 
-export const { setSearchQuery, setPage } = filmSearchSlice.actions;
+export const { setSearchQuery, setPage, setOpenClose } =
+  filmSearchSlice.actions;
 
 export default filmSearchSlice.reducer;

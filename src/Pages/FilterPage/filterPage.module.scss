@@ -9,6 +9,12 @@
     min-height: 1000px;
     margin: auto;
     border-radius: 50px;
+    .filterInfo {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 17px;
+      color: white;
+    }
     .container {
       display: flex;
       justify-content: space-evenly;

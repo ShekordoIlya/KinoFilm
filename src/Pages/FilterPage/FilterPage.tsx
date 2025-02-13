@@ -40,9 +40,7 @@ const FilterPage = () => {
     }
   };
   const handleNext = () => {
-    if (currentPage <= Math.ceil(totalItems / itemsPerPage)) {
-      dispatch(setPage(currentPage + 1));
-    }
+    dispatch(setPage(currentPage + 1));
   };
   const renderPageNumbers = () => {
     const pages = [];
@@ -88,6 +86,7 @@ const FilterPage = () => {
       </main>
     );
   }
+  console.log(totalPages);
 
   return (
     <main className={style.main}>
@@ -100,6 +99,10 @@ const FilterPage = () => {
         Назад
       </button>
       <div className={style.section}>
+        <p className={style.filterInfo}>
+          Фильмы отфильтрованы по годам, с {yearFrom} по {yearTo}, и по
+          рейтингу: от {minRating} до {maxRating}
+        </p>
         <div className={style.container}>
           {films.map((film: any) => {
             return (
