@@ -27,6 +27,7 @@ const Header = () => {
           <a href="/">KinoFilm</a>
         </p>
         <button
+          className={style.regAuthBtn}
           onClick={() => {
             dispatch(setOpenClose(!openClose));
             console.log(openClose);
@@ -40,16 +41,7 @@ const Header = () => {
           onClose={() => {
             dispatch(setOpenClose(!openClose));
           }}
-        >
-          <div className={style.emailWrapper}>
-            <p className={style.emailInfo}>Введите адрес электронной почты:</p>
-            <input className={style.email} type="email" />
-          </div>
-          <div>
-            <p>Введите пароль:</p>
-            <input type="password" />
-          </div>
-        </Modal>
+        ></Modal>
         <form className={style.wrapper} onSubmit={handlerSubmit}>
           <input
             type={"text"}

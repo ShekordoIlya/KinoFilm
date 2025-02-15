@@ -1,24 +1,71 @@
-import { PropsWithChildren } from "react";
 import style from "./Header.module.scss";
+import { PropsWithChildren, useState } from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 
 interface IModal {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Modal = ({ isOpen, onClose, children }: PropsWithChildren<IModal>) => {
+const Modal = ({ isOpen, onClose }: PropsWithChildren<IModal>) => {
+  const { registrationData, setRegistrationData } = useState({
+    email: " ",
+    password: " ",
+  });
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRegistrationData((prev: any) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <div className={style.modalContainer}>
       <div className={style.modalContent}>
         <div className={style.wrapperBtn}>
           <button className={style.closeBtn} onClick={onClose}>
-            Close
+            X
           </button>
         </div>
 
-        {children}
+        <form>
+          <div className={style.emailWrapper}>
+            <p className={style.emailInfo}>Введите адрес электронной почты:</p>
+            <input
+              //   value={registrationData.email}
+              name="email"
+              onChange={inputHandler}
+              className={style.email}
+              type="email"
+            />
+          </div>
+          <div className={style.passWrapper}>
+            <p className={style.passInfo}>Введите пароль:</p>
+            <input
+              //   value={registrationData.password}
+              onChange={inputHandler}
+              name="password"
+              className={style.pass}
+              type="password"
+            />
+          </div>
+          <div className={style.signInBtnWrapper}>
+            <button type="submit" className={style.signInBtn}>
+              Войти
+            </button>
+          </div>
+          <div className={style.registrationWrapper}>
+            <p>
+              Нет аккаунта? Нажмите{" "}
+              <Link className={style.registrationLink} to={"/RegistrationPage"}>
+                сюда
+              </Link>{" "}
+              чтобы создать аккаунт.
+            </p>
+          </div>
+        </form>
       </div>
       <div className={style.modalOverlay} onClick={onClose}></div>
     </div>,
