@@ -9,10 +9,11 @@ interface IModal {
 }
 
 const Modal = ({ isOpen, onClose }: PropsWithChildren<IModal>) => {
-  const { registrationData, setRegistrationData } = useState({
-    email: " ",
-    password: " ",
-  });
+  const { registrationData, setRegistrationData }: any = useState(null);
+  const formHandler = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(registrationData);
+  };
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setRegistrationData((prev: any) => ({
@@ -30,7 +31,7 @@ const Modal = ({ isOpen, onClose }: PropsWithChildren<IModal>) => {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={formHandler}>
           <div className={style.emailWrapper}>
             <p className={style.emailInfo}>Введите адрес электронной почты:</p>
             <input
@@ -59,9 +60,9 @@ const Modal = ({ isOpen, onClose }: PropsWithChildren<IModal>) => {
           <div className={style.registrationWrapper}>
             <p>
               Нет аккаунта? Нажмите{" "}
-              <Link className={style.registrationLink} to={"/RegistrationPage"}>
+              <a className={style.registrationLink} href={"/registrationPage"}>
                 сюда
-              </Link>{" "}
+              </a>{" "}
               чтобы создать аккаунт.
             </p>
           </div>

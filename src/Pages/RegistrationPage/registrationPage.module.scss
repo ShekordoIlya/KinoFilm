@@ -1,0 +1,78 @@
+.registrationbcg {
+  width: 100vw;
+  background: url("../../Components/Main/IronMan3.webp") 50% 0 no-repeat #000;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  .returnbtn {
+    background-color: rgb(190, 48, 48);
+    width: 125px;
+    height: 35px;
+    transition: 0.3s;
+    border: 0px;
+    border-radius: 20px;
+    color: white;
+    margin-left: 50px;
+    position: fixed;
+    &:hover {
+      transform: scale(1.3);
+      background-color: bisque;
+      transition: 0.3s;
+      cursor: pointer;
+      color: #000;
+    }
+  }
+  .section {
+    background-color: rgb(152, 23, 23);
+    width: 60%;
+    min-height: 550px;
+    margin: auto;
+    border-radius: 50px;
+    .registrationContainer {
+      text-align: center;
+      .registrationForm {
+        padding-top: 200px;
+        .submitBtn {
+          background-color: rgb(190, 48, 48);
+          width: 145px;
+          height: 35px;
+          transition: 0.3s;
+          border: 0px;
+          border-radius: 20px;
+          color: white;
+          &:hover {
+            transform: scale(1.3);
+            background-color: bisque;
+            transition: 0.3s;
+            cursor: pointer;
+            color: #000;
+          }
+        }
+        .formInputContainerEmail {
+          padding-bottom: 30px;
+          padding-left: 25px;
+          .inputField {
+            font-size: 18px;
+            padding-left: 10px;
+            border-radius: 30px;
+          }
+          .label {
+            color: white;
+            font-size: 18px;
+          }
+        }
+        .formInputContainer {
+          padding-bottom: 30px;
+          .inputField {
+            font-size: 18px;
+            padding-left: 10px;
+            border-radius: 30px;
+          }
+          .label {
+            color: white;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

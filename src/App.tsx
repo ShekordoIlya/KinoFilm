@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import FilmPage from "./Pages/Film/FilmPage";
 import SearchingPage from "./Pages/SearchingPage/SearchingPage";
 import FilterPage from "./Pages/FilterPage/FilterPage";
+import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="film/:kinopoiskId" element={<FilmPage />} />
           <Route path="film/searching" element={<SearchingPage />} />
           <Route path="film/filter" element={<FilterPage />} />
+          <Route path="registrationPage" element={<RegistrationPage />} />
         </Route>
       </Routes>
     </>

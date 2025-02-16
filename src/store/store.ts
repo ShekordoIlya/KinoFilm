@@ -3,6 +3,7 @@ import filmSliceRTK from "./filmSliceRTK";
 import filmPageSlice from "./filmPageSlice";
 import filmSearchSlice from "./filmSearchSlice";
 import filterFilmSlice from "./filmFilterSlice";
+import userSlice from "./userSlice";
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     oneFilm: filmPageSlice,
     searchFilms: filmSearchSlice,
     filterFilms: filterFilmSlice,
+    users: userSlice,
   },
 });
