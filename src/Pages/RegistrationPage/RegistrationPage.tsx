@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import style from "./registrationPage.module.scss";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registrationUser } from "../../store/userSlice";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user, error } = useSelector((state) => state.users);
   const [registrationData, setRegistrationData] = useState({
     username: "",
     email: "",
@@ -17,6 +18,10 @@ const RegistrationPage = () => {
   const formHandle = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(registrationUser(registrationData));
+    console.log(registrationData);
+    // if (user !== null && error == null) {
+    //   navigate("/activatePage");
+    // }
   };
   const inputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;

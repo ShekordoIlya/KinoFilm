@@ -9,7 +9,7 @@ export const registrationUser = createAsyncThunk(
   async (registrationData, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        "https://studapi.teachmeskills.by/auth/users",
+        "https://studapi.teachmeskills.by/auth/users/",
         {
           method: "POST",
           body: JSON.stringify(registrationData),
