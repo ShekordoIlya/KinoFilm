@@ -6,6 +6,7 @@ import FilmPage from "./Pages/Film/FilmPage";
 import SearchingPage from "./Pages/SearchingPage/SearchingPage";
 import FilterPage from "./Pages/FilterPage/FilterPage";
 import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
+import ActivatePage from "./Pages/Activate/ActivatePage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="film/searching" element={<SearchingPage />} />
           <Route path="film/filter" element={<FilterPage />} />
           <Route path="registrationPage" element={<RegistrationPage />} />
+          <Route path="activatePage" element={<ActivatePage />} />
         </Route>
       </Routes>
     </>

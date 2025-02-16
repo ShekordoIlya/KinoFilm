@@ -1,13 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import style from "./registrationPage.module.scss";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registrationUser } from "../../store/userSlice";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
-  const { registrationData, setRegistrationData } = useState({
+  const dispatch = useDispatch();
+  const [registrationData, setRegistrationData] = useState({
+    username: "",
     email: "",
     password: "",
+    course_group: 14,
   });
+
+  const formHandle = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(registrationUser(registrationData));
+  };
+  const inputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setRegistrationData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <div className={style.registrationbcg}>
       <button
@@ -20,28 +37,35 @@ const RegistrationPage = () => {
       </button>
       <div className={style.section}>
         <div className={style.registrationContainer}>
-          <form className={style.registrationForm}>
+          <form onSubmit={formHandle} className={style.registrationForm}>
             <div className={style.formInputContainerEmail}>
               <label className={style.label}>Email:</label>
               <input
-                // value={registrationData.email}
+                value={registrationData.email}
                 name="email"
-                onChange={(e) => {
-                  const { value, name } = e.target;
-                  setRegistrationData((prev) => ({
-                    ...prev,
-                    [name]: value,
-                  }));
-                }}
+                onChange={inputHandle}
                 placeholder="Введите email"
                 className={style.inputField}
                 type="email"
               ></input>
             </div>
             <div className={style.formInputContainer}>
+              <label className={style.label}>Username:</label>
+              <input
+                value={registrationData.username}
+                name="username"
+                onChange={inputHandle}
+                placeholder="Введите имя пользователя"
+                className={style.inputField}
+                type="text"
+              ></input>
+            </div>
+            <div className={style.formInputContainer}>
               <label className={style.label}>Password:</label>
               <input
-                // value={registrationData.password}
+                value={registrationData.password}
+                name="password"
+                onChange={inputHandle}
                 placeholder="Введите пароль"
                 className={style.inputField}
                 type="password"
