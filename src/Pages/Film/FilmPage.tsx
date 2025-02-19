@@ -3,13 +3,12 @@ import style from "./film.module.scss";
 import { useEffect } from "react";
 import { fetchFilm } from "../../store/filmPageSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import FilterField from "../../Components/Filter/FilterField";
 
 const Film = () => {
-  const { film, load } = useSelector((state): any => state.oneFilm);
+  const { film, load } = useSelector((state: any): any => state.oneFilm);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { kinopoiskId } = useParams();
+  const { kinopoiskId }: any = useParams();
   useEffect(() => {
     dispatch(fetchFilm({ kinopoiskId }));
   }, []);

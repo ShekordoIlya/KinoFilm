@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import style from "./SectionFilm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchFilms, setPage } from "../../store/filmSliceRTK";
@@ -31,7 +31,7 @@ const FilmContainer = () => {
   };
 
   console.log(films, "its from film");
-  const renderPageNumbers = () => {
+  const renderPageNumbers = (): Iterable<ReactNode> => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
@@ -53,7 +53,7 @@ const FilmContainer = () => {
   return (
     <>
       <div className={style.container}>
-        {films.map((oneFilm: any) => {
+        {films.map((oneFilm: object) => {
           return (
             <picture
               onClick={() => {

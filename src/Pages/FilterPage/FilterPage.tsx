@@ -11,12 +11,12 @@ const FilterPage = () => {
     yearTo,
     minRating,
     maxRating,
-    totalItems,
+
     totalPages,
     currentPage,
-    itemsPerPage,
+
     loading,
-  } = useSelector((state) => state.filterFilms);
+  } = useSelector((state: any) => state.filterFilms);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,7 +42,7 @@ const FilterPage = () => {
   const handleNext = () => {
     dispatch(setPage(currentPage + 1));
   };
-  const renderPageNumbers = () => {
+  const renderPageNumbers = (): Array<number> => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
