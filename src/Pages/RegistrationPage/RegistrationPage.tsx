@@ -19,9 +19,6 @@ const RegistrationPage = () => {
     e.preventDefault();
     dispatch(registrationUser(registrationData));
     console.log(registrationData);
-    // if (user !== null && error == null) {
-    //   navigate("/activatePage");
-    // }
   };
   const inputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -77,7 +74,13 @@ const RegistrationPage = () => {
               ></input>
             </div>
             <div className={style.submitBtnContainer}>
-              <button className={style.submitBtn} type="submit">
+              <button
+                onClick={() => {
+                  navigate("activatePage/:uid/:token");
+                }}
+                className={style.submitBtn}
+                type="submit"
+              >
                 Зарегистрироваться
               </button>
             </div>

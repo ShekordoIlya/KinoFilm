@@ -12,8 +12,8 @@ import {
 const FilterField = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showFilterField, yearFrom, yearTo } = useSelector(
-    (state) => state.filterFilms
+  const { showFilterField, yearFrom, yearTo }: any = useSelector(
+    (state: any): any => state.filterFilms
   );
   return (
     <div className={!showFilterField ? style.filter : style.filterHide}>
@@ -23,7 +23,7 @@ const FilterField = () => {
           <p className={style.from}>От:</p>
           <select
             className={style.from}
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
               dispatch(setMinRating(e.target.value));
             }}
             name="minRating"
@@ -43,7 +43,7 @@ const FilterField = () => {
         <div>
           <p>До:</p>
           <select
-            onChange={(e) => {
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
               dispatch(setMaxRating(e.target.value));
             }}
             name="maxRating"
@@ -66,7 +66,7 @@ const FilterField = () => {
         <label className={style.label}>От</label>
         <label className={style.label}>{yearFrom}</label>
         <input
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             dispatch(setYearFrom(e.target.value));
           }}
           type="range"
@@ -80,7 +80,7 @@ const FilterField = () => {
         <label className={style.label}>{yearTo}</label>
         <input
           className={style.inputTo}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             dispatch(setYearTo(e.target.value));
           }}
           type="range"

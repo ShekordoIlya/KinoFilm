@@ -6,14 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const SearchingPage = () => {
   const dispatch = useDispatch();
-  const {
-    films,
-    searchQuery,
-    totalItems,
-    totalPages,
-    currentPage,
-    itemsPerPage,
-  } = useSelector((state) => state.searchFilms);
+  const { films, searchQuery, totalPages, currentPage } = useSelector(
+    (state: any) => state.searchFilms
+  );
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(FetchSearchFilm({ searchQuery, currPage: currentPage }));
@@ -32,7 +27,7 @@ const SearchingPage = () => {
     dispatch(setPage(currentPage + 1));
   };
 
-  const renderPageNumbers = () => {
+  const renderPageNumbers = (): Array<number> => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
       pages.push(
